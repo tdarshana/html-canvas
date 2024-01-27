@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ying & Yang</title>
+</head>
+
+<body>
+    <canvas id="canvas" style="background-color: grey" width="700" height="700">
+
+    </canvas>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        drawYingYang(
+            canvas.width / 4,
+            canvas.height / 4,
+            100
+        );
+
+        drawYingYang(
+            3 * canvas.width / 4,
+            3 * canvas.height / 4,
+            100
+        );
+
+        drawYingYang(
+            3 * canvas.width / 4,
+            canvas.height / 4,
+            100
+        );
+
+        drawYingYang(
+            canvas.width / 4,
+            3 * canvas.height / 4,
+            100
+        );
+
+        drawYingYang(
+            canvas.width / 2,
+            canvas.height / 2,
+            100
+        );
+
+
+        function drawYingYang(center_x, center_y, radius) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(
+                center_x,
+                center_y,
+                radius,
+                0,
+                Math.PI * 2
+            );
+            ctx.fillStyle = "white";
+            ctx.clip();
+
+            ctx.beginPath();
+            ctx.rect(
+                center_x - radius,
+                center_y - radius,
+                radius,
+                radius * 2
+            );
+            ctx.fillStyle = "black";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.rect(
+                center_x,
+                center_y - radius,
+                radius,
+                radius * 2
+            );
+            ctx.fillStyle = "white";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(
+                center_x,
+                center_y - radius / 2,
+                radius / 2,
+                0,
+                Math.PI * 2
+            );
+            ctx.fillStyle = "white";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(
+                center_x,
+                center_y - radius / 2,
+                radius / 6,
+                0,
+                Math.PI * 2
+            );
+            ctx.fillStyle = "black";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(
+                center_x,
+                center_y + radius / 2,
+                radius / 2,
+                0,
+                Math.PI * 2
+            );
+            ctx.fillStyle = "black";
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(
+                center_x,
+                center_y + radius / 2,
+                radius / 6,
+                0,
+                Math.PI * 2
+            );
+            ctx.fillStyle = "white";
+            ctx.fill();
+            ctx.restore();
+
+        }
+
+    </script>
+</body>
+
+</html>
